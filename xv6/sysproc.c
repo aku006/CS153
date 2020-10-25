@@ -77,6 +77,13 @@ sys_sleep(void)
   return 0;
 }
 
+int
+sys_hello(void)
+{
+	cprintf("Hello from the kernel");
+	return 0;
+}
+
 // return how many clock tick interrupts have occurred
 // since start.
 int
