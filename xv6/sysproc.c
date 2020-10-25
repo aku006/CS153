@@ -78,6 +78,16 @@ sys_sleep(void)
 }
 
 int
+exitS(int status) {
+	if (argint(0, &status) < 0) {
+		return -1;
+	}
+	myproc()->exitStatus = status;
+	exitS(status);
+	return 0;
+}
+
+int
 sys_hello(void)
 {
 	cprintf("Hello from the kernel");
