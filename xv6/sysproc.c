@@ -21,6 +21,16 @@ sys_exit(void)
 }
 
 int
+sys_exitS(int status) {
+	if (argint(0, &status) < 0) {
+		return -1;
+	}
+	myproc()->exitStatus = status;
+	exitS(status);
+	return 0;
+}
+
+int
 sys_wait(void)
 {
   return wait();
@@ -78,19 +88,16 @@ sys_sleep(void)
 }
 
 int
-exitS(int status) {
-	if (argint(0, &status) < 0) {
-		return -1;
-	}
-	myproc()->exitStatus = status;
-	exitS(status);
+sys_hello(void)
+{
+	cprintf("Hello from the kernel");
 	return 0;
 }
 
 int
-sys_hello(void)
+sys_hello2(void)
 {
-	cprintf("Hello from the kernel");
+	cprintf("Hello from the kernel again");
 	return 0;
 }
 
