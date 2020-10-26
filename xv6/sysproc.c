@@ -31,9 +31,10 @@ sys_exitS(int status) {
 }
 
 int
-sys_wait(void)
+sys_wait(int* status)
 {
-  return wait();
+	argptr(0, (char**)&status, sizeof(status));
+	return wait(status);
 }
 
 int
